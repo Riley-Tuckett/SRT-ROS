@@ -1,3 +1,4 @@
+# Get base image from osrf/ros
 FROM osrf/ros:jazzy-desktop-full
 
 # Install dependencies
