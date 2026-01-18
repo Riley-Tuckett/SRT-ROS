@@ -165,7 +165,7 @@ launch_rover_system() {
     log_info "=========================================="
     
     # Launch the system using the launch file
-    ros2 launch rover_control rover_system.launch.py
+    ros2 launch rover_control system_launch.py
 }
 
 # Launch only the micro-ROS agent
