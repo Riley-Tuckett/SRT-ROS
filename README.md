@@ -5,15 +5,17 @@ This is a simple controller publisher/subscriber node launch program for Swinbur
 
 To run:
 First, compile dockerfile (or download it)
-'''
+```
 ./build
+```
 or
+```
 docker pull docker pull swinroverteam/swinrovermicroros:latest
-'''
+```
 
 Then, run the file
-'''
+```
 ./run
-'''
+```
 
 Everything else should be taken care of for you!
