@@ -3,7 +3,7 @@
 # Exit on error, undefined variables, and pipe failures
 set -euo pipefail
 
-# Configuration
+# Environment variables
 ROS_DISTRO="${ROS_DISTRO:-jazzy}"
 MICRO_ROS_BRANCH="${MICRO_ROS_BRANCH:-$ROS_DISTRO}"
 WORKSPACE_DIR="${WORKSPACE_DIR:-$(pwd)}"
@@ -75,7 +75,9 @@ setup_micro_ros_agent() {
     if [ ! -d "src/micro_ros_setup" ]; then
         log_info "Cloning micro_ros_setup repository (branch: $MICRO_ROS_BRANCH)..."
         mkdir -p src
-        if [ !  git clone -b "$MICRO_ROS_BRANCH" https://github.com/micro-ROS/micro_ros_setup.git src/micro_ros_setup ]; then
+        # This is almost definitely not the correct way to check for errors
+        # In the future, try using OR operators (||)
+        if [ !  'git clone -b "$MICRO_ROS_BRANCH" https://github.com/micro-ROS/micro_ros_setup.git src/micro_ros_setup' ]; then
             error_exit "Failed to clone micro_ros_setup repository"
         fi
         log_info "Repository cloned successfully"
@@ -85,10 +87,11 @@ setup_micro_ros_agent() {
 
     # Source ROS setup
     log_info "Sourcing ROS $ROS_DISTRO setup..."
-    if [ ! -f "/opt/ros/$ROS_DISTRO/setup. bash" ]; then
+    printenv
+    if [ ! -f "/opt/ros/$ROS_DISTRO/setup.sh" ]; then
         error_exit "ROS $ROS_DISTRO setup file not found"
     fi
-    source "/opt/ros/$ROS_DISTRO/setup.bash"
+    source "/opt/ros/$ROS_DISTRO/setup.sh"
 
     # Update rosdep
     log_info "Updating rosdep..."
