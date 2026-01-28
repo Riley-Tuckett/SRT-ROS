@@ -82,7 +82,7 @@ private:
       control_publisher_->publish(control_msg);
       
       // Debugging information, comment when unneeded
-      RCLCPP_INFO(this->get_logger(), "Publishing: [%.2f, %.2f, %. 2f, %.2f]", 
+      RCLCPP_INFO(this->get_logger(), "Publishing: [%.2f, %.2f, %.2f, %.2f]", 
                    left_x, left_y, right_x, right_y);
     }
   }
