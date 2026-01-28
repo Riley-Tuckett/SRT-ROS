@@ -12,12 +12,20 @@ echo "Make sure your controller is plugged in!"
 echo "Press Ctrl+C to stop all nodes"
 echo ""
 
+# In order, this command:
+# Enables container interactive mode,
+# Sets the container to remove itself once it exits,
+# Sets the container name,
+# Sets the container network,
+# Sets the container level of privilege,
+# Sets environment variables,
+# Binds X11 unix socket to container,
+# Specifies the image file
 docker run -it --rm \
   --name rover_ground_control \
   --network host \
   --privileged \
-  --device /dev/input \
-  -e DISPLAY=$DISPLAY \
-  -e LAUNCH_MODE=integrated \
+  --env DISPLAY=$DISPLAY \
+  --env LAUNCH_MODE=integrated \
   -v /tmp/.X11-unix:/tmp/.X11-unix:rw \
-  rover-control: latest
+  swinroverteam/swinrovermicroros:latest
