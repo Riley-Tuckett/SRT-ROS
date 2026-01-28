@@ -1,7 +1,7 @@
 #!/bin/bash
 
-# Exit on error and pipe failures (not undefined variables due to ROS setup scripts)
-set -eo pipefail
+# Exit on error, undefined variables, and pipe failures
+set -euo pipefail
 
 # Environment variables
 ROS_DISTRO="${ROS_DISTRO:-jazzy}"
