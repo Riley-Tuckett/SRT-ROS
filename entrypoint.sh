@@ -13,6 +13,7 @@ LAUNCH_MODE="${LAUNCH_MODE:-integrated}"
 
 # Initialize ROS-related environment variables to prevent unset errors
 export AMENT_PREFIX_PATH="${AMENT_PREFIX_PATH:-}"
+export AMENT_TRACE_SETUP_FILES="${AMENT_TRACE_SETUP_FILES:-}"
 export CMAKE_PREFIX_PATH="${CMAKE_PREFIX_PATH:-}"
 export COLCON_PREFIX_PATH="${COLCON_PREFIX_PATH:-}"
 export LD_LIBRARY_PATH="${LD_LIBRARY_PATH:-}"
