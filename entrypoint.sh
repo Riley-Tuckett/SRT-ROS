@@ -111,7 +111,7 @@ setup_micro_ros_agent() {
         fi
         # Build custom package
         log_info "Building rover_control package"
-        if ! colcon build --parrallel-workers "$PARALLEL_JOBS" --packages-select rover_control 2>&1; then
+        if ! colcon build --parallel-workers "$PARALLEL_JOBS" --packages-select rover_control 2>&1; then
             error_exit "rover_control package build failed."
         fi
         log_info "Workspace built successfully"
