@@ -107,7 +107,12 @@ setup_micro_ros_agent() {
     if [ ! -f "install/local_setup.bash" ]; then
         log_info "Building workspace with $PARALLEL_JOBS parallel workers..."
         if ! colcon build --parallel-workers "$PARALLEL_JOBS" --cmake-args -DCMAKE_BUILD_TYPE=Release 2>&1; then
-            error_exit "Workspace build failed"
+            error_exit "Workspace build failed."
+        fi
+        # Build custom package
+        log_info "Building rover_control package"
+        if ! colcon build --parralel-workers "$PARALELL_JOBS" --packages-select rover_control 2>&1; then
+            error_exit "rover_control package build failed."
         fi
         log_info "Workspace built successfully"
     else
