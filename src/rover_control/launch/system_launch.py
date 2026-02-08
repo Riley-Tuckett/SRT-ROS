@@ -31,6 +31,7 @@ def generate_launch_description():
             respawn_delay=2.0,
             parameters=[{
                 'device_id': int(xbox_device),
+                'autorepeat_rate': 20.0,
             }],
             remappings=[
                 ('joy', 'joy_xbox'),
@@ -47,6 +48,7 @@ def generate_launch_description():
             respawn_delay=2.0,
             parameters=[{
                 'device_id': int(joystick_device),
+                'autorepeat_rate': 20.0,
             }],
             remappings=[
                 ('joy', 'joy_joystick'),
