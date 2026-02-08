@@ -14,10 +14,9 @@ def generate_launch_description():
     micro_ros_port = os.environ.get('MICRO_ROS_PORT', '8888')
     
     # Get joystick device paths from environment variables
-    xbox_device_path = os.environ.get('XBOX_DEVICE', '/dev/input/js2')
-    joystick_device_path = os.environ.get('JOYSTICK_DEVICE', '/dev/input/js1')
+    xbox_device = os.environ.get('XBOX_DEVICE', '1')
+    joystick_device = os.environ.get('JOYSTICK_DEVICE', '0')
     
-    print(f"[Launch Config] Xbox: {xbox_device_path}, Joystick: {joystick_device_path}")
     
     return LaunchDescription([
         # Log startup information
@@ -31,7 +30,7 @@ def generate_launch_description():
             output='screen',
             respawn=True,
             respawn_delay=2.0,
-            arguments=['--ros-args', '-p', f'device_name:={xbox_device_path}'],
+            arguments=['--ros-args', '-p', f'device_id:={xbox_device}'],
             remappings=[
                 ('joy', 'joy_xbox'),
             ],
@@ -45,7 +44,7 @@ def generate_launch_description():
             output='screen',
             respawn=True,
             respawn_delay=2.0,
-            arguments=['--ros-args', '-p', f'device_name:={joystick_device_path}'],
+            arguments=['--ros-args', '-p', f'device_id:={joystick_device}'],
             remappings=[
                 ('joy', 'joy_joystick'),
             ],
@@ -81,5 +80,5 @@ def generate_launch_description():
             name='micro_ros_agent',
         ),
         
-        LogInfo(msg=f'All nodes launched! Xbox: {xbox_device_path}, Joystick: {joystick_device_path}, Micro-ROS port {micro_ros_port}'),
+        LogInfo(msg=f'All nodes launched! Xbox: {xbox_device}, Joystick: {joystick_device}, Micro-ROS port {micro_ros_port}'),
     ])
