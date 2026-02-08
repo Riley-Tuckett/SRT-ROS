@@ -14,9 +14,7 @@ def generate_launch_description():
     micro_ros_port = os.environ.get('MICRO_ROS_PORT', '8888')
     
     # Get joystick device numbers from environment variables
-    xbox_device = os.environ.get('XBOX_DEVICE', '0')
-    joystick_device = os.environ.get('JOYSTICK_DEVICE', '1')
-    
+
     return LaunchDescription([
         # Log startup information
         LogInfo(msg='Starting Rover Ground Control System... '),
