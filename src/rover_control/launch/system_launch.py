@@ -31,9 +31,7 @@ def generate_launch_description():
             output='screen',
             respawn=True,
             respawn_delay=2.0,
-            parameters=[{
-                'device_id': int(xbox_device),
-            }],
+            arguments=['--ros-args', '-p', f'device_id:={xbox_device}'],
             remappings=[
                 ('joy', 'joy_xbox'),
             ],
@@ -47,9 +45,7 @@ def generate_launch_description():
             output='screen',
             respawn=True,
             respawn_delay=2.0,
-            parameters=[{
-                'device_id': int(joystick_device),
-            }],
+            arguments=['--ros-args', '-p', f'device_id:={joystick_device}'],
             remappings=[
                 ('joy', 'joy_joystick'),
             ],
