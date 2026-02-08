@@ -17,14 +17,36 @@ def generate_launch_description():
         # Log startup information
         LogInfo(msg='Starting Rover Ground Control System... '),
         
-        # 1. Joy Node - reads controller input
+        # 1a. Joy Node for Xbox Controller - reads Xbox controller input
         Node(
             package='joy',
             executable='joy_node',
-            name='joy_node',
+            name='joy_node_xbox',
             output='screen',
             respawn=True,
             respawn_delay=2.0,
+            parameters=[{
+                'dev': '/dev/input/js1',  # Adjust device path as needed
+            }],
+            remappings=[
+                ('joy', 'joy_xbox'),
+            ],
+        ),
+        
+        # 1b. Joy Node for Joystick - reads Joystick input
+        Node(
+            package='joy',
+            executable='joy_node',
+            name='joy_node_joystick',
+            output='screen',
+            respawn=True,
+            respawn_delay=2.0,
+            parameters=[{
+                'dev': '/dev/input/js0',  # Adjust device path as needed
+            }],
+            remappings=[
+                ('joy', 'joy_joystick'),
+            ],
         ),
         
         # 2. Controller Node - processes Xbox controller for drive control
@@ -37,7 +59,7 @@ def generate_launch_description():
             respawn_delay=2.0,
         ),
         
-        # 3. Joystick Node - processes joystick for arm control
+        # 3. Joystick Node - processes Joystick for arm control
         Node(
             package='rover_control',
             executable='joystick_node',
