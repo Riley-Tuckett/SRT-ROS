@@ -44,7 +44,7 @@ def generate_launch_description():
             executable='joy_node',
             name='joy_node_joystick',
             output='screen',
-            respawn=True,
+            respawn=False,
             respawn_delay=2.0,
             parameters=[{
                 'device_id': int(joystick_device),
