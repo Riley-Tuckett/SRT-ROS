@@ -22,6 +22,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     libncurses-dev \
     usbutils \
     ros-jazzy-joy \
+    joystick \
     && rm -rf /var/lib/apt/lists/*
 
 # Set up workspace

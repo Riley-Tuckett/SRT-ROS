@@ -13,6 +13,10 @@ def generate_launch_description():
     # Get micro-ROS port from environment variable, default to 8888
     micro_ros_port = os.environ.get('MICRO_ROS_PORT', '8888')
     
+    # Get joystick device numbers from environment variables
+    xbox_device = os.environ.get('XBOX_DEVICE', '0')
+    joystick_device = os.environ.get('JOYSTICK_DEVICE', '1')
+    
     return LaunchDescription([
         # Log startup information
         LogInfo(msg='Starting Rover Ground Control System... '),
@@ -26,7 +30,7 @@ def generate_launch_description():
             respawn=True,
             respawn_delay=2.0,
             parameters=[{
-                'dev': '/dev/input/js1',  # Adjust device path as needed
+                'dev': f'/dev/input/js{xbox_device}',
             }],
             remappings=[
                 ('joy', 'joy_xbox'),
@@ -42,7 +46,7 @@ def generate_launch_description():
             respawn=True,
             respawn_delay=2.0,
             parameters=[{
-                'dev': '/dev/input/js0',  # Adjust device path as needed
+                'dev': f'/dev/input/js{joystick_device}',
             }],
             remappings=[
                 ('joy', 'joy_joystick'),
@@ -79,5 +83,5 @@ def generate_launch_description():
             name='micro_ros_agent',
         ),
         
-        LogInfo(msg=f'All nodes launched!  Micro-ROS agent on UDP port {micro_ros_port}'),
+        LogInfo(msg=f'All nodes launched! Xbox: js{xbox_device}, Joystick: js{joystick_device}, Micro-ROS port {micro_ros_port}'),
     ])
