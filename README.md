@@ -10,7 +10,7 @@ First, compile dockerfile (or download it)
 ```
 or
 ```
-docker pull docker pull swinroverteam/swinrovermicroros:latest
+docker pull docker pull swinroverteam/srt-ros:latest
 ```
 
 Then, run the setup shell

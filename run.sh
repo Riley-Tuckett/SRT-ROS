@@ -28,4 +28,4 @@ docker run -it --rm \
   --env DISPLAY=$DISPLAY \
   --env LAUNCH_MODE=integrated \
   -v /tmp/.X11-unix:/tmp/.X11-unix:rw \
-  swinroverteam/swinrovermicroros:latest
+  swinroverteam/srt-ros:latest

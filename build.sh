@@ -36,7 +36,7 @@ echo ""
 
 # Build the Docker image
 echo "Building Docker image..."
-docker build -t swinroverteam/swinrovermicroros:latest . 
+docker build -t swinroverteam/SRT-ROS:latest . 
 
 echo ""
 echo "=========================================="
@@ -44,9 +44,9 @@ echo "✓ Build complete!"
 echo "=========================================="
 echo ""
 echo "To run the system:"
-echo "  docker run -it --rm --network host --privileged --device /dev/input swinroverteam/swinrovermicroros:latest"
+echo "  docker run -it --rm --network host --privileged --device /dev/input swinroverteam/srt-ros:latest"
 echo "  alternatively, run the included run.sh shell file"
 echo ""
 echo "To run only the micro-ROS agent:"
-echo "  docker run -it --rm --network host -e LAUNCH_MODE=agent-only swinroverteam/swinrovermicroros:latest"
+echo "  docker run -it --rm --network host -e LAUNCH_MODE=agent-only swinroverteam/srt-ros:latest"
 echo ""
