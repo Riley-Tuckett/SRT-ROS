@@ -6,7 +6,7 @@ This is a simple controller publisher/subscriber node launch program for Swinbur
 To run:
 First, compile dockerfile (or download it)
 ```
-./build
+./build.sh
 ```
 or
 ```
@@ -15,7 +15,7 @@ docker pull docker pull swinroverteam/srt-ros:latest
 
 Then, run the setup shell
 ```
-./run
+./run.sh
 ```
 
 Everything else should be taken care of for you!
