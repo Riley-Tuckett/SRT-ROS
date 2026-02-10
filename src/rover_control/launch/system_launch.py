@@ -7,8 +7,9 @@ def generate_launch_description():
 
     # Launch file to start:  
     # 1. Joy node (controller input)
-    # 2. Control node (processing and publishing to rover)
-    # 3. Micro-ROS agent (communication bridge to ESP32)
+    # 2 & 3. Control nodes (processing and publishing to rover)
+    # 4. Micro-ROS agent (communication bridge to ESP32)
+    # 5. Rover GUI node (Telemetry data display)
     
     # Get micro-ROS port from environment variable, default to 8888
     micro_ros_port = os.environ.get('MICRO_ROS_PORT', '8888')
@@ -78,6 +79,14 @@ def generate_launch_description():
             ],
             output='screen',
             name='micro_ros_agent',
+        ),
+        
+        # 5. Rover GUI - Qt5 based dashboard for telemetry display
+        Node(
+            package='rover_control',
+            executable='gui_node',
+            name='rover_gui',
+            output='screen',
         ),
         
         LogInfo(msg=f'All nodes launched! Xbox: {xbox_device}, Joystick: {joystick_device}, Micro-ROS port {micro_ros_port}'),

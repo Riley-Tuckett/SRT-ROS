@@ -9,6 +9,7 @@ echo "Starting Rover Ground Control System"
 echo "=========================================="
 echo ""
 echo "Make sure your controller is plugged in!"
+echo "GUI Dashboard will launch automatically"
 echo "Press Ctrl+C to stop all nodes"
 echo ""
 

@@ -23,6 +23,11 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     usbutils \
     ros-jazzy-joy \
     joystick \
+    qtbase5-dev \
+    libqt5widgets5 \
+    qt5-qmake \
+    libqt5core5a \
+    libqt5gui5 \
     && rm -rf /var/lib/apt/lists/*
 
 # Set up workspace
